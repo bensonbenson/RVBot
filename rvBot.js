@@ -46,15 +46,15 @@ client.on('message', async msg => {
             await msg.channel.send(message);
         }
         if (argument === 'seulgi') {
-            var message = seulgiQuotes[Math.floor(Math.random()*seulgiQuotes.length)];
+            const message = seulgiQuotes[Math.floor(Math.random()*seulgiQuotes.length)];
             await msg.channel.send(message);
         }
         if (argument === 'wendy') {
-            var message = wendyQuotes[Math.floor(Math.random()*wendyQuotes.length)];
+            const message = wendyQuotes[Math.floor(Math.random()*wendyQuotes.length)];
             await msg.channel.send(message);
         }
         if (argument === 'joy') {
-            var message = joyQuotes[Math.floor(Math.random()*joyQuotes.length)];
+            const message = joyQuotes[Math.floor(Math.random()*joyQuotes.length)];
             await msg.channel.send(message);
         }
         if (argument === 'yeri') {
