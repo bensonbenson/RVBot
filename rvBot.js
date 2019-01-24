@@ -29,20 +29,52 @@ client.on('message', async msg => {
         m.edit(`Ping = ${m.createdTimestamp - msg.createdTimestamp}ms. API latency is ${Math.round(client.ping)}ms.`);
     }
     
-    // Random yeri quote 
+    // Send random quote, lets user choose which member as an argument
     if(command === 'quote') {
-        if (args[0] === 'yeri') {
-            var message = yeriQuotes[Math.floor(Math.random()*yeriQuotes.length)];
+        if(args.length == 0) {
+            await msg.channel.send('Usage: !quote `irene, seulgi, wendy, joy, or yeri`');
+            return; // Prevents error of calling toLowerCase() immediately after this
+        } 
+        const argument = args[0].toLowerCase();
+        // Require explicit spelling and ignores any other args
+        if((argument != 'irene' && argument != 'seulgi' && argument != 'wendy' && argument != 'joy' && argument != 'yeri')) {
+            await msg.channel.send('Usage: !quote `irene, seulgi, wendy, joy, or yeri`');
+        }
+
+        if (argument === 'irene') {
+            const message = ireneQuotes[Math.floor(Math.random()*ireneQuotes.length)];
+            await msg.channel.send(message);
+        }
+        if (argument === 'seulgi') {
+            var message = seulgiQuotes[Math.floor(Math.random()*seulgiQuotes.length)];
+            await msg.channel.send(message);
+        }
+        if (argument === 'wendy') {
+            var message = wendyQuotes[Math.floor(Math.random()*wendyQuotes.length)];
+            await msg.channel.send(message);
+        }
+        if (argument === 'joy') {
+            var message = joyQuotes[Math.floor(Math.random()*joyQuotes.length)];
+            await msg.channel.send(message);
+        }
+        if (argument === 'yeri') {
+            const message = yeriQuotes[Math.floor(Math.random()*yeriQuotes.length)];
             await msg.channel.send(message);
         }
     }
 
     // Play rock paper scissors
     if(command === 'rps') {
-        if(args.length == 0) await msg.channel.send('Usage: !rps `rock, paper, or scissors`');
+        if (args.length == 0) {
+            await msg.channel.send('Usage: !rps `rock, paper, or scissors`');
+            return; // Prevents error of calling toLowerCase() immediately after this
+        }
+        const argument = args[0].toLowerCase();
+        // Require explicit spelling and ignores any other args
+        if((argument != 'rock' && argument != 'paper' && argument !='scissors')) await msg.channel.send('Usage: !rps `rock, paper, or scissors`');
+
         // 0 = rock, 1 = paper, 2 = scissors
         const rand = Math.floor(Math.random() * 3);
-        const argument = args[0].toLowerCase();
 
         if(argument === 'rock') {
             if (rand === 0) await msg.channel.send('Seulgi chose rock, tie.');
