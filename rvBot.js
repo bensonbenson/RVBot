@@ -1,7 +1,12 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
+const ireneQuotes =  require("./members/irene").quotes;
+const seulgiQuotes = require("./members/seulgi").quotes;
+const wendyQuotes = require("./members/wendy").quotes;
+const joyQuotes = require("./members/joy").quotes;
 const yeriQuotes = require("./members/yeri").quotes;
+
 
 client.on('ready', () => {
     console.log('Ready for commands...');
@@ -24,7 +29,7 @@ client.on('message', async msg => {
         m.edit(`Ping = ${m.createdTimestamp - msg.createdTimestamp}ms. API latency is ${Math.round(client.ping)}ms.`);
     }
     
-    // Quote yeri
+    // Random yeri quote 
     if(command === 'quote') {
         if (args[0] === 'yeri') {
             var message = yeriQuotes[Math.floor(Math.random()*yeriQuotes.length)];
@@ -37,19 +42,19 @@ client.on('message', async msg => {
         if(args.length == 0) await msg.channel.send('Usage: !rps `rock, paper, or scissors`');
         // 0 = rock, 1 = paper, 2 = scissors
         const rand = Math.floor(Math.random() * 3);
-        console.log(rand);
+        const argument = args[0].toLowerCase();
 
-        if(args[0].toLowerCase() === 'rock') {
+        if(argument === 'rock') {
             if (rand === 0) await msg.channel.send('Seulgi chose rock, tie.');
             if (rand === 1) await msg.channel.send('Seulgi chose paper, you lost.');
             if (rand === 2) await msg.channel.send('Seulgi chose scissors, you win.');
         }
-        if(args[0].toLowerCase() === 'paper') {
+        if(argument === 'paper') {
             if (rand === 0) await msg.channel.send('Seulgi chose rock, you win.');
             if (rand === 1) await msg.channel.send('Seulgi chose paper, tie.');
             if (rand === 2) await msg.channel.send('Seulgi chose scissors, you lost.');
         }
-        if(args[0].toLowerCase() === 'scissors') {
+        if(argument === 'scissors') {
             if (rand === 0) await msg.channel.send('Seulgi chose rock, you lost.');
             if (rand === 1) await msg.channel.send('Seulgi chose paper, you win.');
             if (rand === 2) await msg.channel.send('Seulgi chose scissors, tie.');
@@ -58,4 +63,3 @@ client.on('message', async msg => {
 });
 
 client.login(config.token);
-

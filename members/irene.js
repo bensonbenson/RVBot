@@ -1,4 +1,4 @@
 const quotes = [
     "bongya"
 ];
-exports.quotes=quotes;
+exports.quotes = quotes;

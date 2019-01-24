@@ -4,4 +4,4 @@ const quotes = [
     "yermseulllllllllllllllll",
     "hi my name is yeRI"
 ];     
-exports.quotes=quotes;
+exports.quotes = quotes;
