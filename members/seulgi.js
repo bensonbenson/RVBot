@@ -1,4 +1,5 @@
 const quotes = [
-    "doh"
+    "doh",
+    "yap yap yap"
 ];
 exports.quotes = quotes;

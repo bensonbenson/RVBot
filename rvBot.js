@@ -7,11 +7,11 @@ const wendyQuotes = require("./members/wendy").quotes;
 const joyQuotes = require("./members/joy").quotes;
 const yeriQuotes = require("./members/yeri").quotes;
 
-
 client.on('ready', () => {
     console.log('Ready for commands...');
 });
 
+// Utilize async to send messages to the channel
 client.on('message', async msg => {
     // Prevent bot from talking to itself or other bots, botception
     if(msg.author.bot) return;
@@ -23,7 +23,7 @@ client.on('message', async msg => {
     const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
     const command =  args.shift().toLowerCase();
     
-    // Return the latency of the bot and API
+    // Returns the latency of the bot and API
     if(command === 'ping') {
         const m = await msg.channel.send('Calculating your ping...');
         m.edit(`Ping = ${m.createdTimestamp - msg.createdTimestamp}ms. API latency is ${Math.round(client.ping)}ms.`);
