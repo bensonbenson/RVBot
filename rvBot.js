@@ -78,20 +78,55 @@ client.on('message', async msg => {
         // Current functionality of this game is complete randomness
         const rand = Math.floor(Math.random() * 3);
 
-        if(argument === 'rock') {
-            if (rand === 0) await msg.channel.send('Seulgi chose rock, tie.');
-            if (rand === 1) await msg.channel.send('Seulgi chose paper, you lost.');
-            if (rand === 2) await msg.channel.send('Seulgi chose scissors, you win.');
-        }
-        if(argument === 'paper') {
-            if (rand === 0) await msg.channel.send('Seulgi chose rock, you win.');
-            if (rand === 1) await msg.channel.send('Seulgi chose paper, tie.');
-            if (rand === 2) await msg.channel.send('Seulgi chose scissors, you lost.');
-        }
-        if(argument === 'scissors') {
-            if (rand === 0) await msg.channel.send('Seulgi chose rock, you lost.');
-            if (rand === 1) await msg.channel.send('Seulgi chose paper, you win.');
-            if (rand === 2) await msg.channel.send('Seulgi chose scissors, tie.');
+        // Future addition: adjust game difficulty based on member 
+        let rpsStatus = 'Seulgi chose ';
+
+        switch(argument) {
+            case 'rock':
+                switch(rand) {
+                    case 0:
+                        rpsStatus += 'rock , tie.';
+                        await msg.channel.send(rpsStatus);
+                        return;
+                    case 1:
+                        rpsStatus += 'paper, you lost.';
+                        await msg.channel.send(rpsStatus);
+                        return;
+                    case 2:
+                        rpsStatus += 'scissors, you win.';
+                        await msg.channel.send(rpsStatus); 
+                        return;
+                }
+            case 'paper':
+                switch(rand) {
+                    case 0:
+                        rpsStatus += 'rock, you win.';
+                        await msg.channel.send(rpsStatus);
+                        return;
+                    case 1:
+                        rpsStatus += 'paper, tie.';
+                        await msg.channel.send(rpsStatus);
+                        return;
+                    case 2:
+                        rpsStatus += 'scissors, you lost.';  
+                        await msg.channel.send(rpsStatus);
+                        return;
+                }
+            case 'scissors':
+                switch(rand) {
+                    case 0: 
+                        rpsStatus += 'rock, you lost.';
+                        await msg.channel.send(rpsStatus);
+                        return;
+                    case 1:
+                        rpsStatus += 'paper, you win.';
+                        await msg.channel.send(rpsStatus);
+                        return;
+                    case 2:
+                        rpsStatus += 'scissors, tie.'
+                        await msg.channel.send(rpsStatus);
+                        return;
+                }
         }
     }
 
