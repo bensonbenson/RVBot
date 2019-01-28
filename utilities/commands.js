@@ -1,4 +1,5 @@
-const embed = {embed: {
+const embed = {
+    embed: {
     color: "16286585",
     title: "**The Great RVBot Command List**",
     image: {
