@@ -39,13 +39,13 @@ client.on('message', async msg => {
     // Send random quote, lets user choose which member as an argument
     if(command === 'quote') {
         if(args.length == 0) {
-            await msg.channel.send('Usage: !quote `irene, seulgi, wendy, joy, or yeri`');
+            await msg.channel.send('Usage: !quote `irene, seulgi, wendy, joy, or yeri`.');
             return; // Prevents error of calling toLowerCase() immediately after this
         } 
         const argument = args[0].toLowerCase();
         // Require explicit spelling and ignores any other args
         if((argument != 'irene' && argument != 'seulgi' && argument != 'wendy' && argument != 'joy' && argument != 'yeri')) {
-            await msg.channel.send('Usage: !quote `irene, seulgi, wendy, joy, or yeri`');
+            await msg.channel.send('Usage: !quote `irene, seulgi, wendy, joy, or yeri`.');
         }
 
         if (argument === 'irene') {
@@ -73,12 +73,12 @@ client.on('message', async msg => {
     // Play rock paper scissors
     if(command === 'rps') {
         if (args.length == 0) {
-            await msg.channel.send('Usage: !rps `rock, paper, or scissors`');
+            await msg.channel.send('Usage: !rps `rock, paper, or scissors`.');
             return; // Prevents error of calling toLowerCase() immediately after this
         }
         const argument = args[0].toLowerCase();
         // Require explicit spelling and ignores any other args
-        if((argument != 'rock' && argument != 'paper' && argument !='scissors')) await msg.channel.send('Usage: !rps `rock, paper, or scissors`');
+        if((argument != 'rock' && argument != 'paper' && argument !='scissors')) await msg.channel.send('Usage: !rps `rock, paper, or scissors`.');
 
         // 0 = rock, 1 = paper, 2 = scissors
         // Current functionality of this game is complete randomness
@@ -148,7 +148,7 @@ client.on('message', async msg => {
     // Roll an N number sided die
     if (command === 'd') {
         if ((args.length == 0) || (isNaN(args))) {
-            await msg.channel.send('Usage: !d `6, 12, 20, 100, or any number of sides you like here`.');
+            await msg.channel.send('Usage: !d `6, 12, 20, 100, or any number of sides here`.');
             return;
         }
         const message = Math.floor(Math.random()*args) + 1;
