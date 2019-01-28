@@ -75,6 +75,7 @@ client.on('message', async msg => {
         if((argument != 'rock' && argument != 'paper' && argument !='scissors')) await msg.channel.send('Usage: !rps `rock, paper, or scissors`');
 
         // 0 = rock, 1 = paper, 2 = scissors
+        // Current functionality of this game is complete randomness
         const rand = Math.floor(Math.random() * 3);
 
         if(argument === 'rock') {
@@ -98,7 +99,7 @@ client.on('message', async msg => {
     if (command === '8ball') {
         if (args.length == 0) {
             await msg.channel.send('Usage: !8ball `your query here`.');
-            return; // Prevents error of calling toLowerCase() immediately after this
+            return;
         }
         const message = eightBall[Math.floor(Math.random()*eightBall.length)];
         await msg.channel.send(message);
