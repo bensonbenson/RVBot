@@ -6,6 +6,7 @@ const seulgiQuotes = require("./members/seulgi").quotes;
 const wendyQuotes = require("./members/wendy").quotes;
 const joyQuotes = require("./members/joy").quotes;
 const yeriQuotes = require("./members/yeri").quotes;
+const eightBall = require("./utilities/eightball").quotes;
 
 client.on('ready', () => {
     console.log('Ready for commands...');
@@ -91,6 +92,16 @@ client.on('message', async msg => {
             if (rand === 1) await msg.channel.send('Seulgi chose paper, you win.');
             if (rand === 2) await msg.channel.send('Seulgi chose scissors, tie.');
         }
+    }
+
+    // Let the user ask 8ball a question, returns a random response, regardless of question.
+    if (command === '8ball') {
+        if (args.length == 0) {
+            await msg.channel.send('Usage: !8ball `your query here`.');
+            return; // Prevents error of calling toLowerCase() immediately after this
+        }
+        const message = eightBall[Math.floor(Math.random()*eightBall.length)];
+        await msg.channel.send(message);
     }
 });
 
