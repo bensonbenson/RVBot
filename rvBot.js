@@ -7,6 +7,7 @@ const wendyQuotes = require("./members/wendy").quotes;
 const joyQuotes = require("./members/joy").quotes;
 const yeriQuotes = require("./members/yeri").quotes;
 const eightBall = require("./utilities/eightball").quotes;
+const commandList = require("./utilities/commands").embed;
 
 client.on('ready', () => {
     console.log('Ready for commands...');
@@ -23,11 +24,16 @@ client.on('message', async msg => {
     // Separate command name from arguments
     const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
     const command =  args.shift().toLowerCase();
-    
+
     // Returns the latency of the bot and API
     if(command === 'ping') {
         const m = await msg.channel.send('Calculating your ping...');
         m.edit(`Ping = ${m.createdTimestamp - msg.createdTimestamp}ms. API latency is ${Math.round(client.ping)}ms.`);
+    }
+
+    // Show the command list
+    if (command === 'command' || command === 'commands' || command === 'commandlist') {
+        await msg.channel.send(commandList);
     }
     
     // Send random quote, lets user choose which member as an argument
@@ -80,7 +86,6 @@ client.on('message', async msg => {
 
         // Future addition: adjust game difficulty based on member 
         let rpsStatus = 'Seulgi chose ';
-
         switch(argument) {
             case 'rock':
                 switch(rand) {
@@ -137,6 +142,16 @@ client.on('message', async msg => {
             return;
         }
         const message = eightBall[Math.floor(Math.random()*eightBall.length)];
+        await msg.channel.send(message);
+    }
+
+    // Roll an N number sided die
+    if (command === 'd') {
+        if ((args.length == 0) || (isNaN(args))) {
+            await msg.channel.send('Usage: !d `6, 12, 20, 100, or any number of sides you like here`.');
+            return;
+        }
+        const message = Math.floor(Math.random()*args) + 1;
         await msg.channel.send(message);
     }
 });
