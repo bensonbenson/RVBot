@@ -8,7 +8,9 @@ const joyQuotes = require("./members/joy").quotes;
 const yeriQuotes = require("./members/yeri").quotes;
 const eightBall = require("./utilities/eightball").quotes;
 const commandList = require("./utilities/commands").embed;
-const scramble = require("./utilities/scramble").scramble;
+const keys = require("./utilities/scramble").keys;
+const shuffledWord = require("./utilities/scramble").shuffled;
+
 
 client.on('ready', () => {
     console.log('Ready for commands...');
@@ -158,12 +160,14 @@ client.on('message', async msg => {
 
     // Play a word scramble game
     if (command === 'scramble') {
-        // Get random object scrambled word object
-        const scrambledWord = scramble[Math.floor(Math.random()*scramble.length)];
-        await msg.channel.send(`Unscramble this: ${scrambledWord.scrambled}`)
+        // Get random index from array of keys and get the keyWord and scrambledWord
+        const index = Math.floor(Math.random()*keys.length);
+        const keyWord = keys[index];
+        const scrambledWord = shuffledWord[index];
+        await msg.channel.send(`Unscramble this: ${scrambledWord}`)
         .then(() => {
             // Utilize "awaitMessages" to continue listening for further messages, times out after 30000
-            msg.channel.awaitMessages(response => response.content === scrambledWord.key, {
+            msg.channel.awaitMessages(response => response.content === keyWord, {
                 max: 1,
                 time: 30000,
                 errors: ['time']

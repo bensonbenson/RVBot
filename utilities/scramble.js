@@ -1,75 +1,43 @@
-const scramble = [
-    {
-        key: 'irene',
-        scrambled: 'neeri'
-    },
-    {
-        key: 'irene',
-        scrambled: 'nreei'
-    },
-    {
-        key: 'irene',
-        scrambled: 'eiern'
-    },
-    {
-        key: 'seulgi',
-        scrambled: 'uilgse'
-    },
-    {
-        key: 'seulgi',
-        scrambled: 'gleusi'
-    },
-    {
-        key: 'seulgi',
-        scrambled: 'usileg'
-    },
-    {
-        key: 'wendy',
-        scrambled: 'wyedn'
-    },
-    {
-        key: 'wendy',
-        scrambled: 'ywdne'
-    },
-    {
-        key: 'wendy',
-        scrambled: 'endwy'
-    },
-    {
-        key: 'joy',
-        scrambled: 'oyj'
-    },
-    {
-        key: 'joy',
-        scrambled: 'yoj'
-    },
-    {
-        key: 'yeri',
-        scrambled: 'reiy'
-    },
-    {
-        key: 'yeri',
-        scrambled: 'eryi'
-    },
-    {
-        key: 'parksooyoung',
-        scrambled: 'aogornysopuk'
-    },
-    {
-        key: 'parksooyoung',
-        scrambled: 'aonrgouksypo'
-    },
-    {
-        key: 'yerim',
-        scrambled: 'rmyie'
-    },
-    {
-        key: 'bongya',
-        scrambled: 'byanog'
-    },
-    {
-        key: 'happiness',
-        scrambled: 'hpapisnes'
-    },
+// Keys to generate scrambled words from
+const keys = [
+    "irene", 
+    "seulgi", 
+    "wendy", 
+    "joy", 
+    "yeri", 
+    "happiness", 
+    "bongya", 
+    "parksooyoung", 
+    "byong", 
+    "yerim",
+    "sometimesyougottabebold",
+    "rookie",
+    "redflavour",
+    "dumbdumb",
+    "russianroulette",
+    "badboy",
+    "icecreamcake"
 ];
-exports.scramble = scramble;
+
+// Shuffles letters in a word around randomly
+function shuffleWord(word) {
+    var shuffledWord = '';
+    word = word.split('');
+    while (word.length > 0) {
+      shuffledWord +=  word.splice(word.length * Math.random() << 0, 1);
+    }
+    return shuffledWord;
+}
+
+// Shuffle the keys and put them in an array
+let shuffledFromKeys = [];
+function putShuffledWordIntoArray() {
+    for (let i = 0 ; i < keys.length; i++) {
+        shuffledFromKeys.push(shuffleWord(keys[i]));
+    }
+}
+putShuffledWordIntoArray();
+
+// TODO: dynamically reshuffle array, because the shuffled words stay the same during current bot instance
+exports.keys = keys;
+exports.shuffled = shuffledFromKeys;
