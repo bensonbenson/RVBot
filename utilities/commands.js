@@ -5,9 +5,6 @@ const embed = {
     image: {
         url: "https://66.media.tumblr.com/429daaa38e0f17dc508f01a833d701e5/tumblr_nud4zomqSW1t7rvrjo1_540.gif"
     },
-    thumbnail: {
-        url: "https://i.imgur.com/rotcxC1.png"
-    },
     fields: [
         {
             name: "!commands !command !commandlist",
