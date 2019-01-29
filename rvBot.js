@@ -8,6 +8,7 @@ const joyQuotes = require("./members/joy").quotes;
 const yeriQuotes = require("./members/yeri").quotes;
 const eightBall = require("./utilities/eightball").quotes;
 const commandList = require("./utilities/commands").embed;
+const scramble = require("./utilities/scramble").scramble;
 
 client.on('ready', () => {
     console.log('Ready for commands...');
@@ -153,6 +154,29 @@ client.on('message', async msg => {
         }
         const message = Math.floor(Math.random()*args) + 1;
         await msg.channel.send(message);
+    }
+
+    // Play a word scramble game
+    if (command === 'scramble') {
+        // Get random object scrambled word object
+        const scrambledWord = scramble[Math.floor(Math.random()*scramble.length)];
+        await msg.channel.send(`Unscramble this: ${scrambledWord.scrambled}`)
+        .then(() => {
+            // Utilize "awaitMessages" to continue listening for further messages, times out after 30000
+            msg.channel.awaitMessages(response => response.content === scrambledWord.key, {
+                max: 1,
+                time: 30000,
+                errors: ['time']
+            })
+            .then (async collected => {
+                // If a person sends the correct answer, tag them and end.
+                await msg.channel.send(`<@${collected.first().member.id}> won! ${collected.first().content} is the correct answer.`);
+            })
+            .catch(async () => {
+                // If there was no correct answer in the time limit, time out
+                await msg.channel.send('There was no correct answer within the time limit.')
+            });
+        });
     }
 });
 

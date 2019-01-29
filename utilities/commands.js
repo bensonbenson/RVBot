@@ -29,6 +29,10 @@ const embed = {
         {
             name: "!d",
             value: "Roll a dice with any amount of sides \n Usage: !d `6, 12, 20, 100, or any number of sides here`."
+        },
+        {
+            name: "!scramble",
+            value: "Play an RV related word unscramble game!"
         }
         ]
     }   
