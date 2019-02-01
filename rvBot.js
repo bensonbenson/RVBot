@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const request = require("request");
 const client = new Discord.Client();
 const config = require("./config.json");
 const ireneQuotes =  require("./members/irene").quotes;
@@ -174,12 +175,25 @@ client.on('message', async msg => {
             })
             .then (async collected => {
                 // If a person sends the correct answer, tag them and end.
+                // This format is the only way to actually mention the username in the server
                 await msg.channel.send(`<@${collected.first().member.id}> won! ${collected.first().content} is the correct answer.`);
             })
             .catch(async () => {
                 // If there was no correct answer in the time limit, time out
                 await msg.channel.send('There was no correct answer within the time limit.')
             });
+        });
+    }
+
+    // Uses thecatapi to send a random cat as a message
+    if (command === 'randomcat') {
+        request.get('http://thecatapi.com/api/images/get?format=src&type=png', {
+        }, async function(error, response) {
+            if(!error && response.statusCode == 200) {
+                await msg.channel.send(response.request.uri.href);
+            } else {
+                console.log(error);
+            }
         });
     }
 });

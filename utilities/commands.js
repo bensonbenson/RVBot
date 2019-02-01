@@ -33,6 +33,10 @@ const embed = {
         {
             name: "!scramble",
             value: "Play an RV related word unscramble game!"
+        },
+        {
+            name: "!randomcat",
+            value: "Sends a random dog. No wait, what?"
         }
         ]
     }   
