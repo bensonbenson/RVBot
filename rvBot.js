@@ -52,25 +52,28 @@ client.on('message', async msg => {
             await msg.channel.send('Usage: !quote `irene, seulgi, wendy, joy, or yeri`.');
         }
 
-        if (argument === 'irene') {
-            const message = ireneQuotes[Math.floor(Math.random()*ireneQuotes.length)];
-            await msg.channel.send(message);
-        }
-        if (argument === 'seulgi') {
-            const message = seulgiQuotes[Math.floor(Math.random()*seulgiQuotes.length)];
-            await msg.channel.send(message);
-        }
-        if (argument === 'wendy') {
-            const message = wendyQuotes[Math.floor(Math.random()*wendyQuotes.length)];
-            await msg.channel.send(message);
-        }
-        if (argument === 'joy') {
-            const message = joyQuotes[Math.floor(Math.random()*joyQuotes.length)];
-            await msg.channel.send(message);
-        }
-        if (argument === 'yeri') {
-            const message = yeriQuotes[Math.floor(Math.random()*yeriQuotes.length)];
-            await msg.channel.send(message);
+        let message;
+        switch(argument) {
+            case 'irene':
+                message = ireneQuotes[Math.floor(Math.random()*ireneQuotes.length)];
+                await msg.channel.send(message);
+                return;
+            case 'seulgi':
+                message = seulgiQuotes[Math.floor(Math.random()*seulgiQuotes.length)];
+                await msg.channel.send(message);
+                return;
+            case 'wendy':
+                message = wendyQuotes[Math.floor(Math.random()*wendyQuotes.length)];
+                await msg.channel.send(message);
+                return;
+            case 'joy':
+                message = joyQuotes[Math.floor(Math.random()*joyQuotes.length)];
+                await msg.channel.send(message);
+                return;
+            case 'yeri':
+                message = yeriQuotes[Math.floor(Math.random()*yeriQuotes.length)];
+                await msg.channel.send(message);
+                return;
         }
     }
 
