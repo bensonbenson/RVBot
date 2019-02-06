@@ -1,6 +1,6 @@
 # RVBot
 
-A cleaned up version of [this](https://github.com/bensonbenson/F-X-Cord-Member-Info-and-Gif-Bot).
+A cleaned up version of [this](https://github.com/bensonbenson/F-X-Cord-Member-Info-and-Gif-Bot), and centered around Red Velvet.
 
 ## Usage
 
@@ -25,3 +25,13 @@ node rvBot
 `node rvBot` will start the bot up.
 
 Not sure how to add a bot to your Discord server? [Try this](https://github.com/jagrosh/MusicBot/wiki/Adding-Your-Bot-To-Your-Server).
+
+### Current list of commands
+* !commands !command !commandlist - Displays the command list in the server chat.
+* !ping - Returns the ping for communicating with the bot.
+* !quote `name here` - Returns a random quote from a given member parameter.
+* !rps `rock, paper, or scissors` - Plays rock, paper, scissors with the bot.
+* !8ball `query` - Answers your query with a very correct 8ball reading.
+* !d `integer` - Rolls an N sided dice.
+* !scramble - Play a RV themed word scramble game.
+* !randomcat - Sends a random cat .png using the randomcat API.

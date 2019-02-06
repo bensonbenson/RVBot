@@ -154,8 +154,8 @@ client.on('message', async msg => {
 
     // Roll an N number sided die
     if (command === 'd') {
-        if ((args.length == 0) || (isNaN(args))) {
-            await msg.channel.send('Usage: !d `6, 12, 20, 100, or any number of sides here`.');
+        if ((args.length == 0) || (isNaN(args)) || (args < 1) || (args > Number.MAX_SAFE_INTEGER)) {
+            await msg.channel.send('Usage: !d `6, 12, 20, 100, or any number of valid integer sides here`.');
             return;
         }
         const message = Math.floor(Math.random()*args) + 1;
