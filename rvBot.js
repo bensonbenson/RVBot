@@ -154,12 +154,14 @@ client.on('message', async msg => {
 
     // Roll an N number sided die
     if (command === 'd') {
+        // Check for valid integer args
+        // eg: if args exists, is actual integer, is a value greater than 0, but making sure the integer is below the MAX_SAFE_INTEGER value
         if ((args.length == 0) || (isNaN(args)) || (args < 1) || (args > Number.MAX_SAFE_INTEGER)) {
             await msg.channel.send('Usage: !d `6, 12, 20, 100, or any number of valid integer sides here`.');
             return;
         }
         const message = Math.floor(Math.random()*args) + 1;
-        await msg.channel.send(message);
+        await msg.channel.send('Rolled a ' + message);
     }
 
     // Play a word scramble game
