@@ -57,23 +57,23 @@ client.on('message', async msg => {
             case 'irene':
                 message = ireneQuotes[Math.floor(Math.random()*ireneQuotes.length)];
                 await msg.channel.send(message);
-                return;
+                break;
             case 'seulgi':
                 message = seulgiQuotes[Math.floor(Math.random()*seulgiQuotes.length)];
                 await msg.channel.send(message);
-                return;
+                break;
             case 'wendy':
                 message = wendyQuotes[Math.floor(Math.random()*wendyQuotes.length)];
                 await msg.channel.send(message);
-                return;
+                break;
             case 'joy':
                 message = joyQuotes[Math.floor(Math.random()*joyQuotes.length)];
                 await msg.channel.send(message);
-                return;
+                break;
             case 'yeri':
                 message = yeriQuotes[Math.floor(Math.random()*yeriQuotes.length)];
                 await msg.channel.send(message);
-                return;
+                break;
         }
     }
 
@@ -99,46 +99,49 @@ client.on('message', async msg => {
                     case 0:
                         rpsStatus += 'rock , tie.';
                         await msg.channel.send(rpsStatus);
-                        return;
+                        break;
                     case 1:
                         rpsStatus += 'paper, you lost.';
                         await msg.channel.send(rpsStatus);
-                        return;
+                        break;
                     case 2:
                         rpsStatus += 'scissors, you win.';
                         await msg.channel.send(rpsStatus); 
-                        return;
+                        break;
                 }
+                break;
             case 'paper':
                 switch(rand) {
                     case 0:
                         rpsStatus += 'rock, you win.';
                         await msg.channel.send(rpsStatus);
-                        return;
+                        break;
                     case 1:
                         rpsStatus += 'paper, tie.';
                         await msg.channel.send(rpsStatus);
-                        return;
+                        break;
                     case 2:
                         rpsStatus += 'scissors, you lost.';  
                         await msg.channel.send(rpsStatus);
-                        return;
+                        break;
                 }
+                break;
             case 'scissors':
                 switch(rand) {
                     case 0: 
                         rpsStatus += 'rock, you lost.';
                         await msg.channel.send(rpsStatus);
-                        return;
+                        break;
                     case 1:
                         rpsStatus += 'paper, you win.';
                         await msg.channel.send(rpsStatus);
-                        return;
+                        break;
                     case 2:
                         rpsStatus += 'scissors, tie.'
                         await msg.channel.send(rpsStatus);
-                        return;
+                        break;
                 }
+                break;
         }
     }
 
